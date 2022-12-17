@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ:SignUp</title>
+
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}?{% now 'U' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body id="signup-page">
+    <div class="signup-body">
+        <form method="POST" class="form">
+            <div class="logo">
+                <h2 class="logo-title">QUIZ-APP</h2>
+            </div>
+            
+            {% csrf_token %}
+            <div class="input-container name">
+                <i class="ri-user-3-line icon"></i>
+                {{form.first_name}}
+            </div>
+            <div class="input-container name">
+                <i class="ri-user-3-line icon"></i>
+                {{form.last_name}}
+            </div>
+            <div class="input-container email">
+                <i class="ri-at-line icon"></i>
+                {{form.email}}
+            </div>
+            <div class="input-container password">
+                <i class="ri-key-line icon"></i>
+                {{form.password1}}
+            </div>
+            <div class="input-container password">
+                <i class="ri-key-line icon"></i>
+                {{form.password2}}
+            </div>
+            
+            <div class="links">
+                <small>Already have an account? <a href="{% url 'login' %}" class="signin-link">Signin now</a></small>
+            </div>
+
+            <button type="submit" class="signup-btn">SignUp</button>
+        </form>
+
+    </div>
+
+    <script>
+        let firstname = document.getElementById('id_first_name')
+        let lastname = document.getElementById('id_last_name')
+        let email = document.getElementById('id_email')
+        let password1 = document.getElementById('id_password1')
+        let password2 = document.getElementById('id_password2')
+
+        firstname.setAttribute('placeholder', 'Firstname...')
+        lastname.setAttribute('placeholder', 'Lastname...')
+        email.setAttribute('placeholder', 'Email...')
+
+        password1.setAttribute('placeholder', 'Password...')
+        password1.setAttribute('type', 'password')
+        
+        password2.setAttribute('placeholder', 'Confirm Password...')
+        password2.setAttribute('type', 'password')
+
+    </script>
+    
+</body>
+</html>

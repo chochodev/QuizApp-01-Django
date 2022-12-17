@@ -1,0 +1,167 @@
+#settings-page {
+    position: relative;
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+    width: 100%;
+    height: max-content;
+}
+
+
+/******************************************************/
+/* PAGE TITLE */
+#settings-page .settings-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #cdcdcd;
+    padding: 0 0 .2em .5em;
+}
+
+#settings-page .settings-title > .name {
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+/*******************************************************/
+/* SETTINGS */
+#settings-page .settings {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .5em;    
+}
+
+/* IMAGE */
+#settings-page .settings > .edit-img {
+    position: relative;
+    width: max-content;
+    display: flex;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+#settings-page .settings > .edit-img .img-display {
+    width: 20em;
+    height: 20em;
+    object-fit: cover;
+    border-radius: 50%;
+    border: .5em solid var(--main-color);
+    box-shadow: var(--shadow-one);
+}
+
+#settings-page .settings > .edit-img .img-input {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    height: max-content;
+    width: max-content;
+    cursor: pointer;
+}
+
+#settings-page .settings > .edit-img .img-input .dp-input {
+    display: none;
+}
+
+#settings-page .settings > .edit-img .img-input .icon {
+    font-size: 1.5em;
+    color: var(--b-color);
+    background: var(--main-color);
+    padding: .5em;
+    border-radius: 50%;
+}
+
+#settings-page .settings > .edit-img .img-input .icon:hover {
+    box-shadow: var(--shadow-btn);
+}
+
+/* NAME */
+#settings-page .settings .edit-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+    padding: 1.5em;
+    width: max-content;
+}
+
+#settings-page .settings .edit-credentials .edit-name,
+#settings-page .settings .edit-credentials .edit-email {
+    width: max-content;
+    display: flex;
+    gap: .5em;
+    align-items: flex-end;
+    justify-content: baseline;
+}
+
+#settings-page .settings .edit-credentials .edit-name > input,
+#settings-page .settings .edit-credentials .edit-email > input {
+    display: flex;
+    max-width: 10em;
+    background: none;
+    border: none;
+    outline: none;
+    pointer-events: none;
+    user-select: none;
+    color: var(--b-color);
+    font: 600 1.2em var(--font-one);
+    padding: .25em .5em;
+    padding-right: 0 !important;
+}
+
+/******************************************************************/
+/* TOGGLE NAME & EMAIL INPUT */
+#settings-page .settings .edit-credentials .edit-name .name-input,
+#settings-page .settings .edit-credentials .edit-email .email-input {
+    pointer-events: all;
+    color: var(--link-color);
+    justify-content: center;
+    border-bottom: 2px solid var(--b-color);
+}
+/*****************************************************************/
+
+#settings-page .settings .edit-credentials .edit-name .icon,
+#settings-page .settings .edit-credentials .edit-email .icon {
+    font-size: 1.4em;
+    color: var(--b-color);
+    background: var(--main-color);
+    padding: .25em;
+    margin: auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/*******************************************************************/
+/* TOGGLE NAME & EMAIL ICON */
+#settings-page .settings .edit-credentials .edit-name .active-icon,
+#settings-page .settings .edit-credentials .edit-email .active-icon {
+    box-shadow: var(--shadow-btn);
+}
+/*******************************************************************/
+
+/* EMAIL */
+#settings-page .settings .edit-credentials .edit-email > input {
+    max-width: 20em !important;
+    font: 500 1em var(--font-one);
+}
+
+/* BUTTON */
+#settings-page .settings .edit-credentials .save-btn {
+    font: 600 1.4em var(--font-one);
+    background: var(--btn-color);
+    color: #fff;
+    padding: .25em .5em;
+    margin-top: 1em;
+    border: none;
+    border-radius: .25em;
+    outline: none;
+    box-shadow: var(--shadow-btn);
+}
+
+#settings-page .settings .edit-credentials .save-btn:focus {
+    background: var(--btn-hover);
+}

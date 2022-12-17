@@ -1,0 +1,208 @@
+#quizselect-page {
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+    width: 100%;
+    height: max-content;
+}
+
+
+/******************************************************/
+/* PAGE TITLE */
+#quizselect-page .quizselect-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    width: 100%;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+#quizselect-page .quizselect-title > .name {
+    padding: .5em .5em .2em;
+    color: var(--btn-color);
+    opacity: .9;
+    font-weight: 500;
+}
+
+#quizselect-page .quizselect-title > .name > span {
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+
+/******************************************************/
+/* RECENT */
+#quizselect-page .recent {
+    display: flex;
+    flex-direction: column;
+    padding-left: .5em;
+}
+
+#quizselect-page .recent .recent-title {
+    font: 500 1.05em var(--font-one);
+    color: var(--btn-color);
+}
+
+#quizselect-page .recent .recent-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+}
+
+#quizselect-page .recent .recent-list .link {
+    display: flex;
+    justify-content: space-between;
+    color: var(--b-color);
+    font: 600 .8em var(--font-one);
+    padding: .2em;
+    border-radius: .2em;
+    width: 7em;
+}
+
+#quizselect-page .recent .recent-list .link .icon {
+    display: none;
+}
+
+#quizselect-page .recent .recent-list .link:hover {
+    background: var(--main-color);
+    color: var(--text-color);
+}
+
+#quizselect-page .recent .recent-list .link:hover .icon {
+    display: flex;
+}
+
+
+/******************************************************/
+/* MAIN SECTION */
+#quizselect-page .courses {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    gap: .5em;
+}
+
+
+/* TITLE */
+#quizselect-page .courses .courses-title {
+    font: 600 1.3em var(--font-one);
+    color: var(--btn-color);
+}
+
+#quizselect-page .courses .select {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+}
+
+#quizselect-page .courses .select .select-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 8em;
+    height: 2em;
+    padding: .25em;
+    gap: 1em;
+    border-radius: .25em;
+    box-shadow: var(--shadow-btn);
+}
+
+#quizselect-page .courses .select .select-title:focus {
+    box-shadow: var(--shadow-one);
+}
+
+#quizselect-page .courses .select .select-title .name {
+    color: var(--b-color);
+    font: 600 1.2em var(--font-one);
+}
+
+#quizselect-page .courses .select .select-title .icon,
+#quizselect-page .courses .select .select-title .icon-2 {
+    color: var(--b-color);
+    font-size: 1.3em;
+}
+
+#quizselect-page .courses .select .select-title .icon-2,
+#quizselect-page .courses .select .select-title:focus .icon {
+    display: none;
+}
+
+#quizselect-page .courses .select .select-title:focus .icon-2,
+#quizselect-page .courses .select .select-title .icon {
+    display: flex;
+}
+
+/* LIST */
+#quizselect-page .courses .select .lists {
+    display: none;
+    flex-direction: column;
+    padding: .5em 0 0 .5em;
+}
+
+#quizselect-page .courses .select .lists .item .title {
+    display: flex;
+    width: 10em;
+    height: 1.5em;
+    justify-content: space-between;
+    align-items: center;
+    padding: .25em;
+}
+
+#quizselect-page .courses .select .select-title:focus ~ .lists {
+    display: flex;
+}
+
+#quizselect-page .courses .select .lists .item .title .name {
+    display: flex;
+    width: 5em;
+    flex-wrap: nowrap;
+    font: 600 1em var(--font-one);
+    color: var(--b-color);
+}
+
+#quizselect-page .courses .select .lists .item .title:focus .name {
+    color: var(--btn-active);
+    text-decoration: underline;
+}
+
+#quizselect-page .courses .select .lists .item .title .quizselect-tick {
+    width: .7em !important;
+    height: .7em !important;
+    border: 2px solid var(--b-color);
+    border-radius: 50% !important;
+    background: #fff;
+}
+
+#quizselect-page .courses .select .lists .item .title:focus .quizselect-tick {
+    background: var(--btn-active);
+    border: 0;
+}
+
+
+/********************************************************************/
+/* BUTTON */
+#quizselect-page .courses .btn{
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+#quizselect-page .courses .btn .icon {
+    font-size: 2.5em;
+    color: var(--btn-color);
+    margin-left: 1em;
+    transform: rotateZ(90deg);
+}
+
+#quizselect-page .courses .btn .icon:hover {
+    color: var(--btn-hover);
+}
+
+#quizselect-page .courses .btn .icon:active {
+    color: var(--btn-active);
+}

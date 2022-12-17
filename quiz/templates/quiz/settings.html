@@ -1,0 +1,63 @@
+{% extends 'quiz/main.html' %} 
+{% load static %} 
+{% block content %} 
+    <div id="settings-page">
+        <div class="settings-title">
+            <h2 class="name">Account Settings</h2>
+        </div>
+
+        <div class="settings">
+            <div class="edit-img">
+                <img class="img-display" src="{% static 'images/Death-Note.jpg' %}">
+                <label for="dp-input" class="img-input">
+                    <input type="file" accept="image/*" class="dp-input" id="dp-input">
+                    <i class="ri-edit-2-line icon"></i>
+                    <span class="image-name"></span>
+                </label>
+                
+            </div>
+            <form action="#" class="edit-credentials">
+                <div class="edit-name">
+                    <input type="text" id="first_name" placeholder="Mikey">
+                    <input type="text" id="last_name" placeholder="Chocho">
+                    <i class="ri-edit-2-line icon" id="edit-name-icon"></i>
+                </div>
+                <div class="edit-email">
+                    <input type="email" id="email" placeholder="mikeychocho@gmail.com">
+                    <i class="ri-edit-2-line icon" id="edit-email-icon"></i>
+                </div>
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let imgInput = document.getElementById('dp-input')
+        let imgName = document.querySelector('.image-name')
+
+        imgInput.addEventListener('change', () => {
+            let inputImage = imgInput.files[0]
+
+            imgName.innerHTML = inputImage.name
+        })
+
+        let firstname = document.getElementById('first_name')
+        let lastname = document.getElementById('last_name')
+        let nameIcon = document.getElementById('edit-name-icon')
+
+        nameIcon.addEventListener('click', () => {
+            firstname.classList.toggle('name-input')
+            lastname.classList.toggle('name-input')
+            nameIcon.classList.toggle('active-icon')
+        })
+
+        let email = document.getElementById('email')
+        let emailIcon = document.getElementById('edit-email-icon')
+
+        emailIcon.addEventListener('click', () => {
+            email.classList.toggle('email-input')
+            emailIcon.classList.toggle('active-icon')
+        })
+    </script>
+
+{% endblock %}

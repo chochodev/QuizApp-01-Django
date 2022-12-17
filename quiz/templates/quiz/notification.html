@@ -1,0 +1,74 @@
+{% extends 'quiz/main.html' %} 
+{% load static %} 
+{% block content %} 
+    <div id="notification-page">
+        <div class="notification-title">
+            <span class="name">Notifications</span>
+        </div>
+
+        <ul class="notifications">
+            <li class="notification">
+                <div class="img-div">
+                    <img class="img" src="{% static 'images/Death-Note.jpg' %}">
+                </div>
+                <div class="name-div">
+                    <a href="#!" class="link">
+                        <span class="name">Welcome to QuizApp FUTA base, this is a welcome message</span>
+                        <i class="ri-arrow-down-s-line icon" id="downIcon"></i>
+                        <br/>
+                    </a>
+                    <span class="time">22:20</span>
+                    <p class="all-name">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto quos veniam minus, est aperiam harum ullam vel minima omnis iure odit et quia repudiandae ab quas libero asperiores autem.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident in sint totam ratione incidunt inventore saepe quas similique, explicabo dolor enim ipsum ducimus facilis eaque reiciendis modi neque quidem labore?
+                    </p>
+                </div>
+            </li>
+            <li class="notification">
+                <div class="img-div">
+                    <img class="img" src="{% static 'images/Death-Note.jpg' %}">
+                </div>
+                <div class="name-div">
+                    <a href="#!" class="link">
+                        <span class="name">Welcome to QuizApp FUTA base, this is a welcome message</span>
+                        <i class="ri-arrow-down-s-line icon" id="downIcon"></i>
+                        <br/>
+                    </a>
+                    <span class="time">22:20</span>
+                    <p class="all-name">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto quos veniam minus, est aperiam harum ullam vel minima omnis iure odit et quia repudiandae ab quas libero asperiores autem.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident in sint totam ratione incidunt inventore saepe quas similique, explicabo dolor enim ipsum ducimus facilis eaque reiciendis modi neque quidem labore?
+                    </p>
+                </div>
+            </li>
+            <li class="notification">
+                <div class="img-div">
+                    <img class="img" src="{% static 'images/Death-Note.jpg' %}">
+                </div>
+                <div class="name-div">
+                    <a href="#!" class="link">
+                        <span class="name">Welcome to QuizApp FUTA base, this is a welcome message</span>
+                        <i class="ri-arrow-down-s-line icon" id="downIcon"></i>
+                        <br/>
+                    </a>
+                    <span class="time">22:20</span>
+                    <p class="all-name">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto quos veniam minus, est aperiam harum ullam vel minima omnis iure odit et quia repudiandae ab quas libero asperiores autem.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident in sint totam ratione incidunt inventore saepe quas similique, explicabo dolor enim ipsum ducimus facilis eaque reiciendis modi neque quidem labore?
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // let notificationLink = document.getElementById('notification-link')
+        // let downIcon = document.querySelector('.icon')
+
+        // notificationLink.addEventListener('click', () => {
+        //     console.log('works!!')
+        //     downIcon.classList.toggle('show-up-icon')
+        // })
+    </script>
+
+{% endblock %}

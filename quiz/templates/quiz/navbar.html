@@ -1,0 +1,66 @@
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<div id="navbar-page">
+    <div class="nav-logo">
+        <h2 class="logo-title">QUIZ-APP</h2>
+    </div>
+    
+    <ul class="nav-list" id="nav-list">
+        <li class="list">
+            <a href="#" class="nav-link">
+                <div class="nav-title">
+                    <i class="ri-home-line icon"></i>
+                    <span class="nav-name">Home</span>
+                </div>
+                <i class="ri-home-7-line" style="display: none;"></i>
+            </a>
+        </li>
+        <li class="list">
+            <a href="#" class="nav-link">
+                <div class="nav-title">
+                    <i class="ri-user-3-line icon"></i>
+                    <span class="nav-name">Account</span>
+                </div>
+                <!-- <i class="ri-user-3-line icon"></i> -->
+            </a>
+        </li>
+        <li class="list">
+            <a href="#" class="nav-link">
+                <div class="nav-title">
+                    <i class="ri-book-mark-line icon"></i>
+                    <span class="nav-name">Quiz</span>
+                </div>
+                <!-- <i class="ri-book-mark-line"></i> -->
+            </a>
+        </li>
+        <li class="list">
+            <a href="#" class="nav-link">
+                <div class="nav-title">
+                    <i class="ri-shield-user-line icon"></i>
+                    <span class="nav-name">About Us</span>
+                </div>
+                <!-- <i class="ri-shield-user-line"></i> -->
+            </a>
+        </li>
+
+        <a href="#" class="signout">SIGN OUT</a>
+    </ul>
+
+    <div class="nav-end">
+        <a href="#" class="signout">SIGN OUT</a>
+        <a href="#" class="notification">
+            <i class="ri-notification-2-line icon"></i>
+            <small class="notification-badge">10+</small>
+        </a>
+    </div>
+
+    <div class="nav-icon" id="nav-icon" onclick="toggleMenu()">
+        <div class="" id="bars">
+            &#9776;
+        </div>
+        <div class="navbar-vanish" id="times">
+            &#10006;
+        </div>
+    </div>
+</div>

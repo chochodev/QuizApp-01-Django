@@ -1,0 +1,183 @@
+{% extends 'quiz/main.html' %} 
+{% load static %}
+
+{% block content %} 
+    <div id="quizselect-page">
+        <div class="quizselect-title">
+            <h2 class="name"><span>Select Quiz Course ... </span>to get started</h2>
+        </div>
+        <div class="recent">
+            <span class="recent-title">Recent...</span>
+            <div class="recent-list">
+                <a href="#!" class="link">
+                    <span>MTS 102</span>
+                    <i class="ri-arrow-right-s-line icon"></i>
+                </a>
+                <a href="#!" class="link">
+                    <span>GNS 106</span>
+                    <i class="ri-arrow-right-s-line icon"></i>
+                </a>
+                <a href="#!" class="link">
+                    <span>CSC 102</span>
+                    <i class="ri-arrow-right-s-line icon"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="courses">
+            <span class="courses-title">All Courses</span>
+            <div class="select">
+                <a href="#!" class="select-title">
+                    <span class="name">LEVEL</span>
+                    <i class="ri-arrow-right-s-fill icon"></i>
+                    <i class="ri-arrow-down-s-fill icon-2"></i>
+                </a>
+                <ul class="lists">
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">100 level</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">200 level</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">300 level</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">400 level</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">500 level</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="select">
+                <a href="#!" class="select-title">
+                    <span class="name">SCHOOL</span>
+                    <i class="ri-arrow-right-s-fill icon"></i>
+                    <i class="ri-arrow-down-s-fill icon-2"></i>
+                </a>
+                <ul class="lists">
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SEET</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SET</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SAAT</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SOC</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SOS</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">SPS</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="select">
+                <a href="#!" class="select-title">
+                    <span class="name">COURSE</span>
+                    <i class="ri-arrow-right-s-fill icon"></i>
+                    <i class="ri-arrow-down-s-fill icon-2"></i>
+                </a>
+                <ul class="lists">
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">MTS 101</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">MTS 102</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">MTS 104</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">GNS 101</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">GNS 102</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">GNS 103</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">GNS 106</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">PHY 101</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="#!" class="title">
+                            <span class="name">PHY 103</span>
+                            <span class="quizselect-tick" id="quizselect-tick"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn">
+                <i class="ri-home-fill icon"></i>
+            </button>
+        </div>
+    </div>
+
+{% endblock %}

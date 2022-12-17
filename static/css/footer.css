@@ -1,0 +1,169 @@
+#footer-page {
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1em;
+    background: var(--b-color);
+    padding: 1em 0;
+}
+
+
+/*===========================================*/
+/* CONTACT INFO */
+#footer-page .foot {
+    display: flex;
+    flex-direction: column;
+    max-width: 20em;
+    height: 10em;
+}
+
+#footer-page .foot > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: .5em;
+    height: 100%;
+}
+
+#footer-page .foot > span {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+#footer-page .foot > div .contact-info {
+    display: flex;
+    flex-direction: column;
+    color: var(--bg-color);
+}
+
+#footer-page .foot > div .contact-info > span {
+    display: flex;
+    align-items: center;
+    height: max-content;
+}
+
+#footer-page .foot .contact-info .icon {
+    margin: auto 0;
+}
+
+#footer-page .foot > div .contact-info > a {
+    color: var(--main-color);
+    font-size: .8em;
+    width: max-content;
+    margin-left: .5em;
+}
+
+#footer-page .foot .social-media-icons{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-evenly;
+    width: 100%;
+    color: var(--main-color);
+}
+
+#footer-page .foot .social-media-icons > a {
+    width: max-content;
+    height: max-content;
+}
+
+#footer-page .foot .social-media-icons > a:hover .icon {
+    color: var(--text-color);
+    transform: scale(1.1);
+    transition: .1s ease-in-out;
+}
+
+#footer-page .foot .social-media-icons > a .icon {
+    font-size: 2.5em;
+    color: var(--main-color);
+    margin: auto 0;
+}
+
+/*===========================================*/
+/* SUPPORT / QUICK LINKS */
+#footer-page .foot .foot-links .link {
+    display: flex;
+    width: 100%;
+    gap: .2em;
+}
+
+#footer-page .foot .foot-links .link:hover span {
+    color: var(--btn-hover) !important;
+    transition: .2s ease-in-out;
+    transform: scale(1.05);
+}
+
+#footer-page .foot .foot-links .icon {
+    color: var(--main-color);
+    font-size: 1.1em;
+    margin: auto 0;
+}
+
+#footer-page .foot .foot-links span {
+    color: var(--main-color);
+}
+
+
+/*===========================================*/
+/* NEWSLETTER / CUSTOMER SERVICE */
+#footer-page .foot:last-child > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: .25em;
+}
+
+#footer-page .foot:last-child > div input {
+    width: 100%;
+    height: 2.2em;
+    padding: 0 .5em;
+    font-size: 1.1em;
+    border-radius: .5em;
+    box-shadow: var(--shadow-one);
+    background: #fff;
+    outline: none;
+    border: none;
+}
+
+#footer-page .foot:last-child > div .link {
+    width: 100%;
+    height: 2em;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    border-radius: .5em;
+    margin-top: .25em;
+    padding: 0 .25em;
+}
+
+#footer-page .foot:last-child > div span {
+    color: var(--main-color);
+    width: max-content;
+    margin: 0 auto;
+}
+
+#footer-page .foot:last-child > div .link:last-child {
+    background: var(--btn-hover);
+}
+
+#footer-page .foot:last-child > div .link:hover {
+    opacity: .9;
+}
+
+#footer-page .foot:last-child > div .link:focus {
+    color: #fff;
+    background: var(--text-color);
+    border: 2px solid #fff;
+    transition: .2s ease-in-out;
+}

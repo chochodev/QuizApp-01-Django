@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ:SignIn</title>
+
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body id="signup-page">
+    <div class="signup-body">
+        <form method="POST" class="form">
+            <div class="logo">
+                <h2 class="logo-title">QUIZ-APP</h2>
+            </div>
+            
+            {% csrf_token %}
+            <div class="input-container email">
+                <i class="ri-at-line icon"></i>
+                {{form.email}}
+            </div>
+            <div class="input-container password">
+                <i class="ri-key-line icon"></i>
+                {{form.password1}}
+            </div>
+            
+            <div class="links">
+                <small>Don't have an account? <a href="{% url 'register' %}" class="signin-link">Signup now</a></small>
+            </div>
+
+            <button type="submit" class="signup-btn">SignIn</button>
+        </form>
+
+    </div>
+
+    <script>
+        let email = document.getElementById('id_email')
+        let password1 = document.getElementById('id_password1')
+
+        email.setAttribute('placeholder', 'Email...')
+        
+        password1.setAttribute('placeholder', 'Confirm Password...')
+        password1.setAttribute('type', 'password')
+
+    </script>
+    
+</body>
+</html>

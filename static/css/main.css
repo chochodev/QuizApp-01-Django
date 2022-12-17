@@ -1,0 +1,51 @@
+:root {
+    --bg-color: #fff;
+    --b-color: #8693AB;
+    --main-color: #ecf0f3;
+    --text-color: #48494e;
+    --link-color: #5a5a5c;
+    --sub-color: #48a5de;
+
+    --yellow-color: #eebb30;
+
+    --btn-color: #02c8db;
+    --btn-hover: #50e5b5;
+    --btn-active: #88ef9e;
+
+    --shadow-one: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
+    --shadow-btn: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+
+    --shadow-two: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+
+    --font-one: "Lato", sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+*::selection {
+    background: #aaa;
+    color: #fff;
+}
+
+a {
+    color: var(--link-color);   
+}
+
+#main-body {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    padding-bottom: 8em;
+}
+
+#main-body > .content {
+    padding-bottom: 8em;
+}
