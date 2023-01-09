@@ -88,6 +88,7 @@
 }
 
 #quiz-page .quiz .options .option-btn {
+    position: relative;
     width: max-content;
     display: flex;
     justify-content: start;
@@ -100,17 +101,37 @@
     min-height: 1.5em;
 }
 
-#quiz-page .quiz .options .option-btn .option {
-    font: 600 1em var(--font-one);
-    color: var(--b-color);
+#quiz-page .quiz .options .option-btn .index {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    min-width: 5em;
+    height: 100%;
+    min-height: 2em;
+    opacity: 0;
+    cursor: pointer;
 }
 
+#quiz-page .quiz .options .option-btn .option {
+    position: absolute;
+    left: 0;
+    width: max-content;
+    font: 600 1em var(--font-one);
+    color: var(--b-color);
+    padding: .25em;
+}
+
+#quiz-page .quiz .options .option-btn .index:focus ~ .option {
+    color: var(--btn-active);
+    border: 1px solid var(--btn-active);
+    border-radius: .25em;
+}
 
 /* NEXT BUTTON */
-#quiz-page .quiz .next-btn {
+#quiz-page .quiz .main-quiz .next-btn {
     display: flex;
     width: max-content;
-    margin-left: 2.2em;
+    margin-left: 1.5em;
     padding: .25em .5em;
     border: none;
     border-radius: .25em .5em;
@@ -121,11 +142,11 @@
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1)
 }
 
-#quiz-page .quiz .next-btn:hover {
+#quiz-page .quiz .main-quiz .next-btn:hover {
     box-shadow: var(--shadow-btn);
 }
 
-#quiz-page .quiz .next-btn:active {
+#quiz-page .quiz .main-quiz .next-btn:active {
     background: var(--btn-hover);
 }
 

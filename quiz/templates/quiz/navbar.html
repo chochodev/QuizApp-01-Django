@@ -8,16 +8,16 @@
     
     <ul class="nav-list" id="nav-list">
         <li class="list">
-            <a href="#" class="nav-link">
+            <a href="{% url 'home' %}" class="nav-link">
                 <div class="nav-title">
                     <i class="ri-home-line icon"></i>
                     <span class="nav-name">Home</span>
                 </div>
-                <i class="ri-home-7-line" style="display: none;"></i>
+                <!-- <i class="ri-home-7-line" style="display: none;"></i> -->
             </a>
         </li>
         <li class="list">
-            <a href="#" class="nav-link">
+            <a href="{% url 'settings' %}" class="nav-link">
                 <div class="nav-title">
                     <i class="ri-user-3-line icon"></i>
                     <span class="nav-name">Account</span>
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li class="list">
-            <a href="#" class="nav-link">
+            <a href="{% url 'quiz' %}" class="nav-link">
                 <div class="nav-title">
                     <i class="ri-book-mark-line icon"></i>
                     <span class="nav-name">Quiz</span>
@@ -35,7 +35,7 @@
             </a>
         </li>
         <li class="list">
-            <a href="#" class="nav-link">
+            <a href="{% url 'about' %}" class="nav-link">
                 <div class="nav-title">
                     <i class="ri-shield-user-line icon"></i>
                     <span class="nav-name">About Us</span>
@@ -44,12 +44,12 @@
             </a>
         </li>
 
-        <a href="#" class="signout">SIGN OUT</a>
+        <a href="{% url 'signout' %}" class="signout">SIGN OUT</a>
     </ul>
 
     <div class="nav-end">
-        <a href="#" class="signout">SIGN OUT</a>
-        <a href="#" class="notification">
+        <a href="{% url 'signout' %}" class="signout">SIGN OUT</a>
+        <a href="{% url 'notification' %}" class="notification">
             <i class="ri-notification-2-line icon"></i>
             <small class="notification-badge">10+</small>
         </a>

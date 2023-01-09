@@ -4,44 +4,49 @@
 {% block content %} 
     <div id="quiz-page">
 
+        <div>{{score}}</div>
         {% for info in data %}
         <div class="quiz-title">
             <h2 class="name">Quiz</h2>
             <h3 class="type">
-                <span class="level">{{info.level}}l</span> > <span class="sch">{{info.school}}</span> > <span class="course">{{info.course}}</span>
+                <span class="level">{{info.level}}l</span> > <span class="course">{{info.course}}</span>
             </h3>
         </div>
 
         <div class="quiz">            
-            <div class="main-quiz">
+            <form class="main-quiz" action="{% url 'quiz' %}" method="POST">
+                {% csrf_token %}
                 <div class="question">
                     <span class="name" id="question">{{info.id}}. {{info.question}}</span>
                 </div>
-                <form class="options">
+                <ul class="options">
                     <li class="option-btn">
-                        <span class="index">A. </span>
-                        <span class="option" id="option-a">{{info.optionA}}</span>
+                        <input type="radio" name="option" id="option-a" value="a" class="index">
+                        <label class="option" for="option-a">A. {{info.optionA}}</label>
                     </li>
                     <li class="option-btn">
-                        <span class="index" >B. </span>
-                        <span class="option" id="option-b">{{info.optionB}}</span>
+                        <input type="radio" name="option" id="option-a" value="b" class="index">
+                        <label class="option" for="option-b">B. {{info.optionB}}</label>
                     </li>
                     <li class="option-btn">
-                        <span class="index">C. </span>
-                        <span class="option" id="option-c">{{info.optionC}}</span>
+                        <input type="radio" name="option" id="option-a" value="c" class="index">
+                        <label class="option" for="option-c">C. {{info.optionC}}</label>
                     </li>
                     <li class="option-btn">
-                        <span class="index">D. </span>
-                        <span class="option" id="option-d">{{info.optionD}}</span>
+                        <input type="radio" name="option" id="option-a" value="d" class="index">
+                        <label class="option" for="option-d">D. {{info.optionD}}</label>
                     </li>
-                </form>
-            </div>
+                    <div id="score"></div>
+                </ul>
+                
+                {% if data.has_next %}
+                <a href="?page={{data.next_page_number}}" class="next-btn" id="next-btn"><button type="submit">NEXT</button></a>
+                {% else %}
+                <button type="submit" class="next-btn" id="submit-btn">SUBMIT</button>
+                {% endif %}
+                
+            </form>
 
-            {% if data.has_next %}
-            <a href="?page={{data.next_page_number}}" class="next-btn" id="next-btn">NEXT</a>
-            {% else %}
-            <a href="#!" class="next-btn" id="next-btn">SUBMIT</a>
-            {% endif %}
 
             <div class="workings">
                 <a href="#!" class="link" id="working-link">View workings</a>
@@ -102,58 +107,58 @@
             workingLink.classList.toggle('link-active')
         })
 
-        let database = [
-            {
-                question: '5log 10 + 10log 10 is a factor of 50, find the other factor.',
-                options: {
-                    a: '5',
-                    b: '10',
-                    c: '50',
-                    d: '15'
-                },
-                answer: 'b'
-            },
-            {
-                question: 'What is the range of the following numbers {2, 4, 3, 2, 6, 5, 9, 0}',
-                options: {
-                    a: '5',
-                    b: '10',
-                    c: '0',
-                    d: '9'
-                },
-                answer: 'd'
-            },
-            {
-                question: 'Find the median of the following set of numbers {2, 4, 3, 2, 6, 5, 9, 0, 1}',
-                options: {
-                    a: '5',
-                    b: '0',
-                    c: '4',
-                    d: '6'
-                },
-                answer: 'c'
-            },
-            {
-                question: 'If s = at + ½at², make a the subject of formula ',
-                options: {
-                    a: 'a = s/(t² - at²)',
-                    b: 'a = s/(t² + ½at²)',
-                    c: 'a = s/(t + ½t²)',
-                    d: 'a = s/(t + ½at)'
-                },
-                answer: 'c'
-            },
-            {
-                question: 'A cuboid of width, length and height of 4cm, 5cm and 4cm respectively has a volume of .............',
-                options: {
-                    a: '50',
-                    b: '80',
-                    c: '100',
-                    d: '15'
-                },
-                answer: 'b'
-            }
-        ]
+        // let database = [
+        //     {
+        //         question: '5log 10 + 10log 10 is a factor of 50, find the other factor.',
+        //         options: {
+        //             a: '5',
+        //             b: '10',
+        //             c: '50',
+        //             d: '15'
+        //         },
+        //         answer: 'b'
+        //     },
+        //     {
+        //         question: 'What is the range of the following numbers {2, 4, 3, 2, 6, 5, 9, 0}',
+        //         options: {
+        //             a: '5',
+        //             b: '10',
+        //             c: '0',
+        //             d: '9'
+        //         },
+        //         answer: 'd'
+        //     },
+        //     {
+        //         question: 'Find the median of the following set of numbers {2, 4, 3, 2, 6, 5, 9, 0, 1}',
+        //         options: {
+        //             a: '5',
+        //             b: '0',
+        //             c: '4',
+        //             d: '6'
+        //         },
+        //         answer: 'c'
+        //     },
+        //     {
+        //         question: 'If s = at + ½at², make a the subject of formula ',
+        //         options: {
+        //             a: 'a = s/(t² - at²)',
+        //             b: 'a = s/(t² + ½at²)',
+        //             c: 'a = s/(t + ½t²)',
+        //             d: 'a = s/(t + ½at)'
+        //         },
+        //         answer: 'c'
+        //     },
+        //     {
+        //         question: 'A cuboid of width, length and height of 4cm, 5cm and 4cm respectively has a volume of .............',
+        //         options: {
+        //             a: '50',
+        //             b: '80',
+        //             c: '100',
+        //             d: '15'
+        //         },
+        //         answer: 'b'
+        //     }
+        // ]
 
         // let question = document.getElementById('question')
         // let index = document.getElementById('index')

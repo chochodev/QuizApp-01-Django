@@ -20,18 +20,25 @@
             {% csrf_token %}
             <div class="input-container email">
                 <i class="ri-at-line icon"></i>
-                {{form.email}}
+                <input placeholder="Email..." class="email" type="email" name="email">
+                <!-- {{form.email}} -->
             </div>
             <div class="input-container password">
                 <i class="ri-key-line icon"></i>
-                {{form.password1}}
+                <input placeholder="Password..." class="password" type="password" name="password1">
+                <!-- {{form.password1}} -->
             </div>
             
             <div class="links">
-                <small>Don't have an account? <a href="{% url 'register' %}" class="signin-link">Signup now</a></small>
+                <small>Don't have an account? <a href="{% url 'signup' %}" class="signin-link">Signup now</a></small>
             </div>
 
             <button type="submit" class="signup-btn">SignIn</button>
+            <div class="messages">
+                {% for message in messages %} 
+                    <p class="success-message">{{message}}</p>
+                {% endfor %}
+            </div>
         </form>
 
     </div>

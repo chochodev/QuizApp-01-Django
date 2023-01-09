@@ -80,6 +80,22 @@
     box-shadow: var(--shadow-btn);
 }
 
+#settings-page .settings > .edit-img .image-name {
+    display: none;
+    position: absolute;
+    bottom: 1em;
+    max-width: 20em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: 600 .8em var(--font-one);
+    color: var(--link-color);
+    padding: .25em;
+    border-radius: .25em;
+    background: var(--main-color);
+    box-shadow: var(--shadow-one);
+}
+
 /* NAME */
 #settings-page .settings .edit-credentials {
     display: flex;
@@ -160,6 +176,7 @@
     border-radius: .25em;
     outline: none;
     box-shadow: var(--shadow-btn);
+    cursor: pointer;
 }
 
 #settings-page .settings .edit-credentials .save-btn:focus {

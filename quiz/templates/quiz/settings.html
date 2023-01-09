@@ -6,29 +6,30 @@
             <h2 class="name">Account Settings</h2>
         </div>
 
-        <div class="settings">
+        <form action="#" class="settings" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="edit-img">
-                <img class="img-display" src="{% static 'images/Death-Note.jpg' %}">
+                <img class="img-display" src="{{request.user.avatar.url}}">
                 <label for="dp-input" class="img-input">
-                    <input type="file" accept="image/*" class="dp-input" id="dp-input">
+                    <input type="file" accept="image/*" name="avatar" class="dp-input" id="dp-input">
                     <i class="ri-edit-2-line icon"></i>
-                    <span class="image-name"></span>
                 </label>
-                
+                <span class="image-name"></span>
             </div>
-            <form action="#" class="edit-credentials">
+                
+            <div class="edit-credentials">
                 <div class="edit-name">
-                    <input type="text" id="first_name" placeholder="Mikey">
-                    <input type="text" id="last_name" placeholder="Chocho">
+                    <input type="text" id="first_name" name="first_name" placeholder="{{request.user.first_name}}">
+                    <input type="text" id="last_name" name="last_name" placeholder="{{request.user.last_name}}">
                     <i class="ri-edit-2-line icon" id="edit-name-icon"></i>
                 </div>
                 <div class="edit-email">
-                    <input type="email" id="email" placeholder="mikeychocho@gmail.com">
+                    <input type="email" id="email" name="email" placeholder="{{request.user.email}}">
                     <i class="ri-edit-2-line icon" id="edit-email-icon"></i>
                 </div>
                 <button type="submit" class="save-btn">Save</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     <script>
@@ -38,7 +39,8 @@
         imgInput.addEventListener('change', () => {
             let inputImage = imgInput.files[0]
 
-            imgName.innerHTML = inputImage.name
+            imgName.style.display = 'flex'
+            imgName.innerHTML = 'updated: ' + inputImage.name
         })
 
         let firstname = document.getElementById('first_name')
