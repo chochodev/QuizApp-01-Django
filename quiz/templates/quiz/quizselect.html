@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block content %} 
-    <div id="quizselect-page">
+    <form method="POST" action="{% url 'quizselect' %}" id="quizselect-page">
+        {% csrf_token %}
         <div class="quizselect-title">
             <h2 class="name"><span>Select Quiz Course ... </span>to get started</h2>
         </div>
@@ -27,112 +28,28 @@
         <div class="courses">
             <span class="courses-title">All Courses</span>
             <div class="select">
-                <a href="#!" class="select-title">
-                    <span class="name">LEVEL</span>
-                    <i class="ri-arrow-right-s-fill icon"></i>
-                    <i class="ri-arrow-down-s-fill icon-2"></i>
-                </a>
-                <ul class="lists">
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">100 level</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">200 level</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">300 level</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">400 level</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">500 level</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="select">
-                <a href="#!" class="select-title">
-                    <span class="name">COURSE</span>
-                    <i class="ri-arrow-right-s-fill icon"></i>
-                    <i class="ri-arrow-down-s-fill icon-2"></i>
-                </a>
-                <ul class="lists">
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">MTS 101</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">MTS 102</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">MTS 104</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">GNS 101</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">GNS 102</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">GNS 103</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">GNS 106</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">PHY 101</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a href="#!" class="title">
-                            <span class="name">PHY 103</span>
-                            <span class="quizselect-tick" id="quizselect-tick"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <!-- My Level select -->
+                <div class="input-group mb-3" style="width: 20%;">
+                    <select data-url="." class="custom-select levels-select" id="inputGroupSelect01">
+                      <option disabled selected>LEVEL</option>
+                      {% for l in levels %}
+                      <option value="{{l.name}}">{{l.name}}L</option>
+                      {% endfor %}
+                    </select>
+                </div>
 
-            <a href="{% url 'quiz'%}" class="btn">
-                <i class="ri-home-fill icon"></i>
-            </a>
+                <!-- My Courses select -->
+                <div class="input-group mb-3 courses-list" style="width: 20%;">
+                    
+                </div>
+               
+            </div>
+            
         </div>
-    </div>
+    </form>
 
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/quiz.js' %}"></script>
 {% endblock %}

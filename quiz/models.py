@@ -1,9 +1,8 @@
 from django.db import models
 from accounts.models import User
-
+from autoslug import AutoSlugField
 
 LEVEL_CHOICES = (
-    (None, 'Select LEVEL'),
     ('100', '100'),
     ('200', '200'),
     ('300', '300'),
@@ -15,17 +14,18 @@ LEVEL_CHOICES = (
 
 
 class MyLevel(models.Model):
-    name = models.CharField(max_length=7, null=True, blank=True, choices=LEVEL_CHOICES, unique=True)
+    name = models.CharField(default='100', max_length=7, null=True, choices=LEVEL_CHOICES, unique=True)
 
     def __str__(self):
-        return self.name[0:20]
+        return f'{self.name}L'
 
 class MyCourse(models.Model):
     level = models.ForeignKey(MyLevel, on_delete=models.CASCADE)
     name = models.CharField(max_length=7, null=True, blank=True, unique=True)
+    slug = AutoSlugField(populate_from='name', unique=True, always_update=True, null=True)
 
     def __str__(self):
-        return self.name[0:20]
+        return self.name
 
 class Question(models.Model):
     course = models.ForeignKey(MyCourse, default="", on_delete=models.CASCADE)

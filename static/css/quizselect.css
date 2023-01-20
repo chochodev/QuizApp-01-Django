@@ -135,61 +135,76 @@
 }
 
 /* LIST */
+/********************************************************************/
 #quizselect-page .courses .select .lists {
-    display: none;
+    display: flex;
     flex-direction: column;
-    padding: .5em 0 0 .5em;
+    gap: .5em;
+    padding-left: 1.5em;
 }
 
-#quizselect-page .courses .select .lists .item .title {
+#quizselect-page .courses .select .lists .item {
+    position: relative;
+    z-index: 1;
+    width: max-content;
     display: flex;
-    width: 10em;
-    height: 1.5em;
-    justify-content: space-between;
-    align-items: center;
-    padding: .25em;
+    justify-content: start;
+    align-items: baseline;
+    flex-wrap: normal;
+    gap: .5em;
+    border: none;
+    background: none;
+    cursor: pointer;
+    min-height: 1.5em;
 }
 
-#quizselect-page .courses .select .select-title:focus ~ .lists {
-    display: flex;
+#quizselect-page .courses .select .lists .item .index {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-width: 5em;
+    height: 100%;
+    min-height: 2em;
+    opacity: 0;
+    cursor: pointer;
 }
 
-#quizselect-page .courses .select .lists .item .title .name {
-    display: flex;
-    width: 5em;
-    flex-wrap: nowrap;
+#quizselect-page .courses .select .lists .item .option {
+    width: max-content;
     font: 600 1em var(--font-one);
     color: var(--b-color);
+    padding: .25em;
+    background: none !important;
 }
 
-#quizselect-page .courses .select .lists .item .title:focus .name {
-    color: var(--btn-active);
-    text-decoration: underline;
-}
-
-#quizselect-page .courses .select .lists .item .title .quizselect-tick {
+#quizselect-page .courses .select .lists .item .radio-diy {
     width: .7em !important;
     height: .7em !important;
     border: 2px solid var(--b-color);
     border-radius: 50% !important;
-    background: #fff;
+    background: #fff
 }
 
-#quizselect-page .courses .select .lists .item .title:focus .quizselect-tick {
+#quizselect-page .courses .select .lists .item .index:focus ~ .option,
+#quizselect-page .courses .select .lists .item .index:focus ~ .radio-diy {
+    color: var(--btn-active);
     background: var(--btn-active);
-    border: 0;
+    border: none;
+    transition: .25s color;
 }
+
 
 
 /********************************************************************/
 /* BUTTON */
-#quizselect-page .courses .btn{
+/* #quizselect-page .courses .btn{
     display: flex;
-    width: 100%;
+    width: max-content;
     justify-content: start;
     outline: none;
     border: none;
     background: none;
+    box-shadow: var(--shadow-btn);
 }
 
 #quizselect-page .courses .btn .icon {
@@ -205,4 +220,4 @@
 
 #quizselect-page .courses .btn .icon:active {
     color: var(--btn-active);
-}
+} */

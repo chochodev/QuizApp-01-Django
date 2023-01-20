@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'sweetify',
     'cloudinary',
     'cloudinary_storage',
+    'debug_toolbar',
 ]
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
@@ -55,6 +56,7 @@ SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,3 +157,7 @@ ANYMAIL = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    '127.0.0.1'
+]

@@ -4,46 +4,47 @@
 {% block content %} 
     <div id="quiz-page">
 
-        <div>{{score}}</div>
-        {% for info in data %}
+        <!-- <div>{{score}}</div> -->
+        {% for q in questions %}
         <div class="quiz-title">
             <h2 class="name">Quiz</h2>
             <h3 class="type">
-                <span class="level">{{info.level}}l</span> > <span class="course">{{info.course}}</span>
+                <span class="level">{{q.course.level.name}}l</span> > <span class="course">{{q.course.name}}</span>
             </h3>
         </div>
 
         <div class="quiz">            
-            <form class="main-quiz" action="{% url 'quiz' %}" method="POST">
+            <form class="main-quiz" method="POST">
                 {% csrf_token %}
                 <div class="question">
-                    <span class="name" id="question">{{info.id}}. {{info.question}}</span>
+                    <span class="name" id="question">{{page_obj.number}}. {{q.question}}</span>
                 </div>
                 <ul class="options">
                     <li class="option-btn">
                         <input type="radio" name="option" id="option-a" value="a" class="index">
-                        <label class="option" for="option-a">A. {{info.optionA}}</label>
+                        <label class="option" for="option-a">A. {{q.optionA}}</label>
                     </li>
                     <li class="option-btn">
                         <input type="radio" name="option" id="option-a" value="b" class="index">
-                        <label class="option" for="option-b">B. {{info.optionB}}</label>
+                        <label class="option" for="option-b">B. {{q.optionB}}</label>
                     </li>
                     <li class="option-btn">
                         <input type="radio" name="option" id="option-a" value="c" class="index">
-                        <label class="option" for="option-c">C. {{info.optionC}}</label>
+                        <label class="option" for="option-c">C. {{q.optionC}}</label>
                     </li>
                     <li class="option-btn">
                         <input type="radio" name="option" id="option-a" value="d" class="index">
-                        <label class="option" for="option-d">D. {{info.optionD}}</label>
+                        <label class="option" for="option-d">D. {{q.optionD}}</label>
                     </li>
                     <div id="score"></div>
                 </ul>
-                
-                {% if data.has_next %}
-                <a href="?page={{data.next_page_number}}" class="next-btn" id="next-btn"><button type="submit">NEXT</button></a>
-                {% else %}
-                <button type="submit" class="next-btn" id="submit-btn">SUBMIT</button>
+                {% if is_paginated %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary next-btn">Next</a>
+                    {% endif %}
                 {% endif %}
+                
+                <button type="submit" class="next-btn" id="submit-btn">SUBMIT</button>
                 
             </form>
 
@@ -60,38 +61,36 @@
             </div>
 
             <ul class="quiz-nav">
-                {% if data.has_previous %}
-                <li class="btn prev-btn">
-                    <a href="?page={{data.previous_page_number}}">&laquo;</i></a>
-                </li>
-                {% else %}
-                <li class="btn prev-btn disabled">
-                    <a href="#!">&laquo;</i></a>
-                </li>
-                {% endif %}
-
-
-                <!-- FOR LIST OF CLICKABLE QUESTIONS -->
-                {% for i in data.paginator.page_range %}
-                    {% if data.number == i %}
-                    <li class="btn current">
-                        <a href="#!" class="name">{{i}}</i></a>
-                    </li>
+                {% if is_paginated %}
+                    {% if page_obj.has_previous %}
+                        <li class="quiz-btn prev-btn">
+                            <a href="?page={{page_obj.previous_page_number}}">&laquo;</i></a>
+                        </li>
                     {% else %}
-                    <li class="btn">
-                        <a href="?page={{i}}" class="name">{{i}}</i></a>
-                    </li>
+                        <li class="quiz-btn prev-btn disabled">
+                            <a href="#!">&laquo;</i></a>
+                        </li>
                     {% endif %}
-                {% endfor %}
-
-                {% if data.has_next %}
-                <li class="btn skip-btn">
-                    <a href="?page={{data.next_page_number}}">&raquo;</i></a>
-                </li>
-                {% else %}
-                <li class="btn skip-btn disabled">
-                    <a href="#!">&raquo;</i></a>
-                </li>
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="quiz-btn {% if num == num %}current{% endif %}">
+                                <a href="?page={{num}}" class="name">{{num}}</a>
+                            </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="quiz-btn">
+                                <a href="?page={{num}}" class="name">{{num}}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="quiz-btn skip-btn">
+                            <a href="?page={{page_obj.next_page_number}}">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="quiz-btn skip-btn disabled">
+                            <a href="#!">&raquo;</i></a>
+                        </li>
+                    {% endif %}
                 {% endif %}
             </ul>
             {% endfor %}
