@@ -35,67 +35,47 @@ class QuizSelect(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         level_val = data.get('levelValue')
-        course_val = data.get('courseValue')
 
         if level_val:
             courses = MyCourse.objects.filter(level__name__startswith=level_val[0]).values('name', 'slug')
 
             return JsonResponse({'courses': list(courses)})
-        if json.loads(request.body)['courseValue']:
-            # For the quiz display on course click
-            course_value = json.loads(request.body)['courseValue']
-            print(f'course value: {course_value}')
-            
-            if course_value in MyCourse.objects.name:
-                questions = MyCourse.objects.all()
-                
-                context = {'questions': questions}
-                return redirect('quiz', context)
-            return JsonResponse(context, safe=False)
 
 class Quiz(LoginRequiredMixin, ListView):
     model = Question
     template_name = 'quiz/quiz.html'
     paginate_by = 1  
-    context_object_name = 'questions'  
+    context_object_name = 'questions'
 
     def get_queryset(self):
         return Question.objects.filter(course__slug=self.kwargs.get('course_slug'))
 
+    def post(self, request, *args, **kwargs):
+        optionValue = request.POST.get('option')
+        print('incoming post request')
 
-    # def get(self, request):
-    #     print('user group = ' + str(request.user.groups.all()))
+        score = 0
+        page_number = int(self.request.GET.get('page'))
 
-    #     data_list = Question.objects.all()
-    #     page = request.GET.get('page', 1)
+        if optionValue.upper() == self.model.objects.all()[page_number-1].answer:
+            score += 1
+            print(f'Score: {score}')
+        else:
+            pass
 
-    #     paginator = Paginator(data_list, 1)
+        context = {'score':score}
+        return JsonResponse(context, safe=False)
 
-    #     try:
-    #         data = paginator.page(page)
-    #     except PageNotAnInteger:
-    #         data = paginator.page(1)
-    #     except EmptyPage:
-    #         data = paginator.page(paginator.num_pages)
+# JSON RESPONSE
+def JsonRes(self, request, *args, **kwargs):
+    if request.method == 'POST':
+        print("\nIT'S WORKING")
 
-    #     form = self.form_name
-        
-    #     context = {'data':data, 'form':form}
-    #     return render(request, self.template_name, context)
+        optionValue = request.POST.get('option')
+        context = {'data': optionValue}
 
-    # def post(self, request):
-    #     template_name = 'quiz/quiz.html'
-    #     form_data = request.POST.get('option')
-    #     score = 0
-
-    #     if form_data == 'c':
-    #         score + 1
-    #     elif form_data != 'c':
-    #         score = score
-        
-    #     context = {'score':score}
-    #     return render(request, self.template_name, context)
-        
+        return JsonResponse(context)
+#**************************************************#
             
 @method_decorator(login_required, name='dispatch')
 class QuizSettings(View):
