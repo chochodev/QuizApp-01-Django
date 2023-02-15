@@ -51,20 +51,29 @@ class Quiz(LoginRequiredMixin, ListView):
         return Question.objects.filter(course__slug=self.kwargs.get('course_slug'))
 
     def post(self, request, *args, **kwargs):
-        optionValue = request.POST.get('option')
-        print('incoming post request')
+        # Getting the page number of the current client page
+        page_number = request.GET.get('page', 1)
 
+        # Getting the answer of the server
+        answer = self.model.objects.filter(course__slug=self.kwargs.get('course_slug'))[page_number].answer.upper()
+
+        # Receiving the option picked from the client side
+        data = json.loads(request.body)
+        optionValue = data['option'].upper()
+        
+        # Initializing and incrementing the score
+        global score
         score = 0
-        page_number = int(self.request.GET.get('page'))
-
-        if optionValue.upper() == self.model.objects.all()[page_number-1].answer:
+        if optionValue == answer:
             score += 1
             print(f'Score: {score}')
-        else:
-            pass
 
-        context = {'score':score}
+        context = {'data':str(score)}
         return JsonResponse(context, safe=False)
+
+# Instead of checking the options with the database one by one, 
+# Let the front end store up the options and send it at the end
+# Check for everything at once at the end miraculously, Lmao😂🤣🤣
 
 # JSON RESPONSE
 def JsonRes(self, request, *args, **kwargs):
@@ -106,3 +115,37 @@ class QuizNotification(View):
     def get(self, request):
 
         return render(request, 'quiz/notification.html')
+
+
+
+
+
+
+
+
+
+
+# class Quiz(LoginRequiredMixin, ListView):
+#     model = Question
+#     template_name = 'quiz/quiz.html'
+#     paginate_by = 1  
+#     context_object_name = 'questions'
+
+#     def get_queryset(self):
+#         return Question.objects.filter(course__slug=self.kwargs.get('course_slug'))
+
+#     def post(self, request, *args, **kwargs):
+#         optionValue = request.POST.get('option')
+#         print(f'incoming post request\n{optionValue}')
+
+#         score = 0
+#         page_number = int(self.request.GET.get('page'))
+
+#         if optionValue.upper() == self.model.objects.all()[page_number-1].answer:
+#             score += 1
+#             print(f'Score: {score}')
+#         else:
+#             pass
+
+#         context = {'score':score}
+#         return JsonResponse(context, safe=False)

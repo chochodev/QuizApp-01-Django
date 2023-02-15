@@ -25,22 +25,21 @@ $('.levels-select').on('change', function(){
 })
 
 $('#option-next-button').on('click', function(e){
-    e.preventDefault();
+    // e.preventDefault();
+    const optionValue = $('input[name=option]:checked').val();
+    console.log(optionValue);
 
-    $('#option-value-form').submit()
-    // const optionValue = $('input[name=option]:checked').val();
+    $.ajax({
+        type: 'POST',
+        url: '.',
+        data: JSON.stringify({
+            'option': optionValue,
+        }),
+        dataType: 'json',
+        success: function(response){
+            console.log(response.data);
+            // $('#option-next-button').off('click');
+        }
+    });
 
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/quiz/quiz/',
-    //     data: JSON.stringify({
-    //         'option': optionValue,
-    //     }),
-    //     dataType: 'json',
-    //     success: function(response){
-    //         console.log(response.data);
-    //     }
-    // });
-
-    // To send the Option Value
 })

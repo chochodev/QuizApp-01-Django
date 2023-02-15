@@ -13,42 +13,44 @@
             </h3>
         </div>
 
-        <div class="quiz">            
-            <form class="main-quiz" data-url="." id="option-value-form" action="?page={{ page_obj.next_page_number }}" method="POST">
+        <div class="quiz">                     
+        {% if page_obj.has_next_page %}
+            <form class="main-quiz" id="option-value-form" action="?page={{ page_obj.next_page_number }}" method="">
+        {% else %}
+            <form class="main-quiz" id="option-value-form" action="#" method=""></form>
+        {% endif %}
                 {% csrf_token %}
                 <div class="question">
                     <span class="name" id="question">{{page_obj.number}}. {{q.question}}</span>
                 </div>
                 <ul class="options">
                     <li class="option-btn">
-                        <input type="radio" name="option" id="option-a" value="a" class="index">
+                        <input type="radio" name="option" id="option-a" value="A" class="index">
                         <label class="option" for="option-a">A. {{q.optionA}}</label>
                     </li>
                     <li class="option-btn">
-                        <input type="radio" name="option" id="option-a" value="b" class="index">
+                        <input type="radio" name="option" id="option-a" value="B" class="index">
                         <label class="option" for="option-b">B. {{q.optionB}}</label>
                     </li>
                     <li class="option-btn">
-                        <input type="radio" name="option" id="option-a" value="c" class="index">
+                        <input type="radio" name="option" id="option-a" value="C" class="index">
                         <label class="option" for="option-c">C. {{q.optionC}}</label>
                     </li>
                     <li class="option-btn">
-                        <input type="radio" name="option" id="option-a" value="d" class="index">
+                        <input type="radio" name="option" id="option-a" value="D" class="index">
                         <label class="option" for="option-d">D. {{q.optionD}}</label>
                     </li>
-                    <div id="score">Score: {{score}}</div>
                 </ul>
                 {% if is_paginated %}
                     {% if page_obj.has_next %}
-                        <button type="submit" class="btn btn-primary option-next-button" id="submit-btn">NEXT</button>
+                        <!-- <button type="submit" class="btn btn-primary option-next-button next-btn" id="submit-btn">NEXT</button> -->
                     
-                        <a id="option-next-button" href="#" class="btn btn-primary next-btn">Next</a>
+                        <a id="option-next-button" href="?page={{page_obj.next_page_number}}" class="next-btn">Next</a>
                     {% else %}
                         <button type="submit" class="next-btn" id="submit-btn">SUBMIT</button>
                     {% endif %}
                 {% endif %}                
             </form>
-
 
             <div class="workings">
                 <a href="#!" class="link" id="working-link">View workings</a>
@@ -98,8 +100,45 @@
         </div>
     </div>
     
+    <div id="e">Score: {{score}}</div>
+    
 {% endblock %}
 
 {% block js %}
     <script src="{% static 'js/quiz.js' %}"></script>
 {% endblock %}
+<!-- 
+<form class="main-quiz" data-url="." id="option-value-form" action="?page={{ page_obj.next_page_number }}" method="POST">
+    {% csrf_token %}
+    <div class="question">
+        <span class="name" id="question">{{page_obj.number}}. {{q.question}}</span>
+    </div>
+    <ul class="options">
+        <li class="option-btn">
+            <input type="radio" name="option" id="option-a" value="a" class="index">
+            <label class="option" for="option-a">A. {{q.optionA}}</label>
+        </li>
+        <li class="option-btn">
+            <input type="radio" name="option" id="option-a" value="b" class="index">
+            <label class="option" for="option-b">B. {{q.optionB}}</label>
+        </li>
+        <li class="option-btn">
+            <input type="radio" name="option" id="option-a" value="c" class="index">
+            <label class="option" for="option-c">C. {{q.optionC}}</label>
+        </li>
+        <li class="option-btn">
+            <input type="radio" name="option" id="option-a" value="d" class="index">
+            <label class="option" for="option-d">D. {{q.optionD}}</label>
+        </li>
+        <div id="score">Score: {{score}}</div>
+    </ul>
+    {% if is_paginated %}
+        {% if page_obj.has_next %}
+            <button type="submit" class="btn btn-primary option-next-button next-btn" id="submit-btn">NEXT</button>
+        
+            <a id="option-next-button" href="#" class="btn btn-primary next-btn">Next</a>
+        {% else %}
+            <button type="submit" class="next-btn" id="submit-btn">SUBMIT</button>
+        {% endif %}
+    {% endif %}                
+</form> -->
