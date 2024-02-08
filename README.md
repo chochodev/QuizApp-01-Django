@@ -7,3 +7,5 @@ This is a project for University students having advanced quiz functions such as
 * Different quiz modes.
 
 #Setup
+## Development server
+`python3 manage.py runserver`
